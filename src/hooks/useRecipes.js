@@ -1,0 +1,27 @@
+import { use } from 'react';
+import { searchRecipesByName, filterByCategory } from '../api/mealdb';
+
+/**
+ * A custom hook to fetch recipes based on a search query or category.
+ * It uses the new React 19 `use` hook to handle promises from the API.
+ * 
+ * @param {object} options
+ * @param {string} options.searchQuery - The search term for recipes.
+ * @param {string} options.category - The category to filter recipes by.
+ * @returns {Array<object>} A list of meals.
+ */
+export const useRecipes = ({ searchQuery, category }) => {
+  let promise;
+
+  if (searchQuery) {
+    promise = searchRecipesByName(searchQuery);
+  } else if (category) {
+    promise = filterByCategory(category);
+  } else {
+    // Default to a popular search if nothing is selected
+    promise = searchRecipesByName('Chicken');
+  }
+
+  const { meals } = use(promise);
+  return meals || [];
+};
