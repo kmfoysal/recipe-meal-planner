@@ -1,3 +1,14 @@
+// Manual cache implementation to guarantee singleton promises for 'use' hook.
+const requestCache = new Map();
+
+const getCached = (key, fn) => {
+  if (!requestCache.has(key)) {
+    requestCache.set(key, fn());
+  }
+  return requestCache.get(key);
+};
+
+
 const API_BASE_URL = 'https://www.themealdb.com/api/json/v1/1';
 
 /**
@@ -26,7 +37,7 @@ const fetchFromApi = async (endpoint) => {
  * @returns {Promise<any>}
  */
 export const searchRecipesByName = (name) => {
-  return fetchFromApi(`search.php?s=${name}`);
+  return getCached(`search-${name}`, () => fetchFromApi(`search.php?s=${name}`));
 };
 
 /**
@@ -35,7 +46,7 @@ export const searchRecipesByName = (name) => {
  * @returns {Promise<any>}
  */
 export const getRecipeDetailsById = (id) => {
-  return fetchFromApi(`lookup.php?i=${id}`);
+  return getCached(`lookup-${id}`, () => fetchFromApi(`lookup.php?i=${id}`));
 };
 
 /**
@@ -43,7 +54,7 @@ export const getRecipeDetailsById = (id) => {
  * @returns {Promise<any>}
  */
 export const listCategories = () => {
-  return fetchFromApi('categories.php');
+  return getCached('categories', () => fetchFromApi('categories.php'));
 };
 
 /**
@@ -52,5 +63,5 @@ export const listCategories = () => {
  * @returns {Promise<any>}
  */
 export const filterByCategory = (category) => {
-  return fetchFromApi(`filter.php?c=${category}`);
+  return getCached(`filter-${category}`, () => fetchFromApi(`filter.php?c=${category}`));
 };

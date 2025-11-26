@@ -1,5 +1,5 @@
 import { useContext } from 'react';
-import { MealPlanContext } from '../context/MealPlanContext';
+import { MealPlanContext } from '../context/MealPlanContext.jsx';
 
 /**
  * A custom hook for accessing the meal plan context.
