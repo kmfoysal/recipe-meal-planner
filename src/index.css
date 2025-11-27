@@ -36,7 +36,7 @@ h1 {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -45,6 +45,7 @@ h2 {
   color: var(--text-color);
   text-align: left;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
 /* --- Keyframe Animations --- */
@@ -111,9 +112,9 @@ h2 {
   background-color: var(--card-background);
   box-shadow: 0 2px 8px var(--shadow-color);
   border-bottom: 1px solid var(--border-color);
-  position: sticky; /* Make header sticky */
+  position: sticky; 
   top: 0;
-  z-index: 100; /* Ensure header is above other content */
+  z-index: 100; 
 }
 
 .header-logo h1 {
@@ -150,7 +151,7 @@ h2 {
   background-color: #202020;
 }
 
-.app-footer p{
+.app-footer p {
   margin: 5px;
 }
 
@@ -241,19 +242,19 @@ h2 {
 /* --- Recipe Search --- */
 .recipe-search-form {
   display: flex;
-  gap: 15px; /* Keep gap for spacing between input wrapper and select */
+  gap: 15px;
   margin: 20px auto 40px;
   padding: 20px;
   border-radius: 12px;
   background-color: var(--card-background);
   box-shadow: 0 4px 12px var(--shadow-color);
   flex-wrap: wrap;
-  justify-content: center; /* Center items when wrapped */
+  justify-content: center;
   align-items: center;
 }
 
 .search-input-wrapper {
-  display: flex; /* Still flex to contain input */
+  display: flex;
   flex-grow: 1;
   min-width: 300px;
 }
@@ -262,16 +263,15 @@ h2 {
 .category-select {
   padding: 12px 15px;
   border: 1px solid var(--border-color);
-  border-radius: 8px; /* Standard border-radius for input */
+  border-radius: 8px;
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
-/* No button-specific border-radius overrides for search input */
 .search-input-wrapper .search-input {
-  border-right: 1px solid var(--border-color); /* Restore full border */
-  border-radius: 8px; /* Ensure full border-radius */
+  border-right: 1px solid var(--border-color);
+  border-radius: 8px;
 }
 
 .search-input:focus,
@@ -360,10 +360,11 @@ h2 {
 /* --- Recipe Details Modal --- */
 .modal-backdrop {
   position: fixed;
-  top: 0;
-  left: 0;
+  top: 50%;
+  left: 50%;
   width: 100%;
   height: 100%;
+  transform: translate(-50%, -50%);
   background-color: rgba(0, 0, 0, 0.6);
   display: flex;
   justify-content: center;
@@ -380,11 +381,12 @@ h2 {
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
   width: 100%;
   max-width: 800px;
-  max-height: 90vh;
+  max-height: 85vh;
   overflow-y: auto;
   position: relative;
   text-align: left;
   animation: scaleIn 0.3s ease-out;
+  outline: none;
 }
 
 .modal-close-button {
@@ -506,8 +508,8 @@ h2 {
 
 /* --- Meal Calendar --- */
 .meal-calendar-container {
-  margin-top: 50px;
-  padding: 30px;
+  margin-top: 30px;
+  padding: 20px;
   background-color: var(--card-background);
   border-radius: 16px;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -624,8 +626,8 @@ h2 {
 
 .shopping-list-actions {
   display: flex;
-  justify-content: flex-end;
-  margin: 15px 0;
+  justify-content: center;
+  margin-top: 15px;
 }
 
 .clear-completed-button {
@@ -752,16 +754,35 @@ h2 {
   padding: 0 20px;
 }
 
-.shopping-list-sidebar .shopping-list-actions {
-  padding: 20px;
-  border-top: 1px solid var(--border-color);
-}
+
 
 .empty-list-message {
   text-align: center;
   padding: 40px 20px;
   color: var(--text-light-color);
 }
+
+.checkbox-label {
+  display: flex;
+  align-items: center;
+  gap: 15px; 
+  cursor: pointer;
+  width: 100%; 
+}
+
+/* Visually hide the native checkbox input */
+.checkbox-label input[type="checkbox"] {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1200px) {
@@ -787,7 +808,7 @@ h2 {
     grid-template-columns: repeat(2, 1fr);
   }
   .modal-content {
-    max-width: 95%; /* Nearly full width */
+    max-width: 85%;
     padding: 20px;
   }
   .modal-title {
@@ -805,12 +826,25 @@ h2 {
 }
 
 @media (max-width: 576px) {
+  .meal-calendar-container {
+    padding: 15px;
+  }
+
+  .meal-calendar-day {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .recipe-search-form {
+    margin-bottom: 20px;
+  }
+
   .recipe-grid {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
   .meal-calendar-grid {
-    grid-template-columns: 1fr;
+    gap: 15px;
   }
   .App {
     padding: 10px;
@@ -818,6 +852,11 @@ h2 {
   h1 {
     font-size: 2.2rem;
   }
+
+  h2 {
+    font-size: 1.6rem;
+  }
+
   .modal-content {
     padding: 15px;
     border-radius: 12px;
@@ -859,15 +898,24 @@ h2 {
     max-width: 90%;
   }
   .app-header {
-    flex-direction: column;
     padding: 15px 20px;
     gap: 15px;
   }
   .header-logo h1 {
     font-size: 1.5rem;
   }
+
+  .header-actions span {
+    display: none;
+  }
+
   .sidebar-toggle-button {
     width: 100%;
     justify-content: center;
+  }
+
+  .search-input,
+  .category-select {
+    width: 100%;
   }
 }

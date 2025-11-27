@@ -1,5 +1,5 @@
 import { useReducer, useOptimistic, useEffect, useTransition } from 'react';
-import { MealPlanContext } from './mealPlanContext.js'; // Import context from separate file
+import { MealPlanContext } from './mealPlanContext.js';
 
 const defaultMealPlan = {
   Monday: null,
@@ -51,14 +51,14 @@ export const MealPlanProvider = ({ children }) => {
 
   const addMeal = (day, recipe) => {
     startTransition(() => {
-      setOptimisticMealPlan({ type: 'ADD_MEAL', payload: { day, recipe } }); // Re-add this
+      setOptimisticMealPlan({ type: 'ADD_MEAL', payload: { day, recipe } }); 
       dispatch({ type: 'ADD_MEAL', payload: { day, recipe } });
     });
   };
 
   const removeMeal = (day) => {
     startTransition(() => {
-      setOptimisticMealPlan({ type: 'REMOVE_MEAL', payload: { day } }); // Re-add this
+      setOptimisticMealPlan({ type: 'REMOVE_MEAL', payload: { day } }); 
       dispatch({ type: 'REMOVE_MEAL', payload: { day } });
     });
   };
