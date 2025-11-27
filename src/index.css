@@ -205,10 +205,10 @@ h2 {
   overflow: hidden;
 }
 
-.skeleton-image,
-.skeleton-text {
+.skeleton {
   background-color: var(--skeleton-bg);
   animation: pulse 1.5s infinite ease-in-out;
+  border-radius: 4px;
 }
 
 .skeleton-image {
@@ -218,13 +218,47 @@ h2 {
 
 .skeleton-text {
   height: 20px;
-  margin: 15px;
-  border-radius: 4px;
+  margin: 10px 0;
 }
 
 .skeleton-text.short {
   width: 60%;
   margin-top: 0;
+}
+
+/* --- Shopping List Skeleton --- */
+.shopping-list-skeleton .shopping-list-actions {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.shopping-list-skeleton .skeleton-button {
+  width: 100px;
+  height: 30px;
+}
+
+.shopping-list-skeleton .shopping-list-item {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 0px 0;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.shopping-list-skeleton .skeleton-checkbox {
+  width: 20px;
+  height: 20px;
+}
+
+.shopping-list-skeleton .skeleton-measure {
+  width: 80px;
+  height: 16px;
+}
+
+.shopping-list-skeleton .skeleton-name {
+  width: 150px;
+  height: 16px;
 }
 
 @keyframes pulse {
@@ -238,6 +272,7 @@ h2 {
     background-color: var(--skeleton-bg);
   }
 }
+
 
 /* --- Recipe Search --- */
 .recipe-search-form {

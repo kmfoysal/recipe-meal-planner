@@ -50,9 +50,15 @@ export const MealPlanProvider = ({ children }) => {
   }, [state]);
 
   const addMeal = (day, recipe) => {
+    const mealInfo = {
+      id: recipe.id,
+      name: recipe.name,
+      thumbnail: recipe.thumbnail
+    };
+
     startTransition(() => {
-      setOptimisticMealPlan({ type: 'ADD_MEAL', payload: { day, recipe } }); 
-      dispatch({ type: 'ADD_MEAL', payload: { day, recipe } });
+      setOptimisticMealPlan({ type: 'ADD_MEAL', payload: { day, recipe: mealInfo } });
+      dispatch({ type: 'ADD_MEAL', payload: { day, recipe: mealInfo } });
     });
   };
 
