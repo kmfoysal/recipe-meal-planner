@@ -1,5 +1,5 @@
 import { use } from 'react';
-import { listCategories } from '../api/mealdb';
+import { listCategories } from '../utils/mealdb';
 
 /**
  * A custom hook to fetch the list of meal categories.

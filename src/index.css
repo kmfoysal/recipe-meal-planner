@@ -112,9 +112,9 @@ h2 {
   background-color: var(--card-background);
   box-shadow: 0 2px 8px var(--shadow-color);
   border-bottom: 1px solid var(--border-color);
-  position: sticky; 
+  position: sticky;
   top: 0;
-  z-index: 100; 
+  z-index: 100;
 }
 
 .header-logo h1 {
@@ -256,7 +256,7 @@ h2 {
 .search-input-wrapper {
   display: flex;
   flex-grow: 1;
-  min-width: 300px;
+  /* min-width: 300px; */
 }
 
 .search-input,
@@ -283,7 +283,7 @@ h2 {
 
 .search-input {
   flex-grow: 1;
-  min-width: 250px;
+  /* min-width: 250px; */
 }
 
 /* --- Recipe Grid & Cards --- */
@@ -754,8 +754,6 @@ h2 {
   padding: 0 20px;
 }
 
-
-
 .empty-list-message {
   text-align: center;
   padding: 40px 20px;
@@ -765,9 +763,9 @@ h2 {
 .checkbox-label {
   display: flex;
   align-items: center;
-  gap: 15px; 
+  gap: 15px;
   cursor: pointer;
-  width: 100%; 
+  width: 100%;
 }
 
 /* Visually hide the native checkbox input */
@@ -782,7 +780,6 @@ h2 {
   white-space: nowrap;
   border-width: 0;
 }
-
 
 /* --- Responsive Adjustments --- */
 @media (max-width: 1200px) {
@@ -854,7 +851,7 @@ h2 {
   }
 
   h2 {
-    font-size: 1.6rem;
+    font-size: 1.5rem;
   }
 
   .modal-content {
@@ -917,5 +914,14 @@ h2 {
   .search-input,
   .category-select {
     width: 100%;
+  }
+}
+
+@media (max-width: 375px) {
+  .meal-calendar-grid {
+    grid-template-columns: 1fr;
+  }
+  .recipe-grid {
+    grid-template-columns: 1fr;
   }
 }

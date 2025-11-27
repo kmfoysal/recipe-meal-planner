@@ -1,5 +1,5 @@
 import { use } from 'react';
-import { getRecipeDetailsById } from '../api/mealdb';
+import { getRecipeDetailsById } from '../utils/mealdb';
 
 /**
  * Transforms the raw recipe data from the API into a more structured format.

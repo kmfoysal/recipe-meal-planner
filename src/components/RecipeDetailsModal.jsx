@@ -11,13 +11,15 @@ const RecipeDetailsModal = ({ recipeId, onClose }) => {
   const modalRef = useRef(null);
 
   useEffect(() => {
-    if (modalRef.current) {
-      modalRef.current.focus(); // Set focus to the modal when it opens
+    const currentModalRef = modalRef.current; // Capture the current ref value
+
+    if (currentModalRef) {
+      currentModalRef.focus(); // Set focus to the modal when it opens
 
       const handleKeyDown = (event) => {
         if (event.key === 'Tab') {
           // Basic focus trapping (can be improved with a library)
-          const focusableElements = modalRef.current.querySelectorAll(
+          const focusableElements = currentModalRef.querySelectorAll(
             'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
           );
           const firstElement = focusableElements[0];
@@ -37,10 +39,10 @@ const RecipeDetailsModal = ({ recipeId, onClose }) => {
         }
       };
 
-      modalRef.current.addEventListener('keydown', handleKeyDown);
+      currentModalRef.addEventListener('keydown', handleKeyDown);
       return () => {
-        if (modalRef.current) { // Add this check
-          modalRef.current.removeEventListener('keydown', handleKeyDown);
+        if (currentModalRef) { // Use the captured ref in cleanup
+          currentModalRef.removeEventListener('keydown', handleKeyDown);
         }
       };
     }

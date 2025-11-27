@@ -1,5 +1,5 @@
 import { use } from 'react';
-import { filterByCategory, searchRecipesByName } from '../api/mealdb';
+import { filterByCategory, searchRecipesByName } from '../utils/mealdb';
 
 /**
  * A custom hook to fetch recipes based on a search query or category.
