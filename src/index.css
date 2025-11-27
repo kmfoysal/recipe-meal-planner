@@ -1,5 +1,5 @@
 /* --- Google Fonts Import --- */
-@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap");
 
 /* --- CSS Variables for Theming --- */
 :root {
@@ -18,7 +18,8 @@
 
 /* --- Global Styles --- */
 body {
-  font-family: 'Poppins', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  font-family: "Poppins", -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto,
+    "Helvetica Neue", Arial, sans-serif;
   margin: 0;
   background-color: var(--background-color);
   color: var(--text-color);
@@ -39,22 +40,32 @@ h1 {
 }
 
 h2 {
-    font-size: 2rem;
-    font-weight: 600;
-    color: var(--text-color);
-    text-align: left;
-    margin-bottom: 20px;
+  font-size: 2rem;
+  font-weight: 600;
+  color: var(--text-color);
+  text-align: left;
+  margin-bottom: 20px;
 }
 
 /* --- Keyframe Animations --- */
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes scaleIn {
-  from { transform: scale(0.95); opacity: 0; }
-  to { transform: scale(1); opacity: 1; }
+  from {
+    transform: scale(0.95);
+    opacity: 0;
+  }
+  to {
+    transform: scale(1);
+    opacity: 1;
+  }
 }
 
 @keyframes card-enter {
@@ -66,6 +77,74 @@ h2 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* --- App Layout --- */
+.app-layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+.app-main {
+  flex-grow: 1;
+}
+
+.app-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 15px 30px;
+  background-color: var(--card-background);
+  box-shadow: 0 2px 8px var(--shadow-color);
+  border-bottom: 1px solid var(--border-color);
+  position: sticky; /* Make header sticky */
+  top: 0;
+  z-index: 100; /* Ensure header is above other content */
+}
+
+.header-logo h1 {
+  font-size: 1.8rem;
+  margin: 0;
+}
+
+.sidebar-toggle-button {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background-color: var(--primary-color);
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.sidebar-toggle-button:hover {
+  background-color: var(--primary-hover-color);
+}
+
+.app-footer {
+  padding: 10px;
+  text-align: center;
+  background-color: #e9ecef;
+  color: var(--text-light-color);
+  font-size: 0.9rem;
+  border-top: 1px solid var(--border-color);
+  background-color: #202020;
+}
+
+.app-footer p{
+  margin: 5px;
+}
+
+.app-footer a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
 }
 
 /* --- Utility & Common Styles --- */
@@ -86,8 +165,12 @@ h2 {
 }
 
 @keyframes spin {
-  0% { transform: rotate(0deg); }
-  100% { transform: rotate(360deg); }
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .error-container {
@@ -108,7 +191,8 @@ h2 {
   overflow: hidden;
 }
 
-.skeleton-image, .skeleton-text {
+.skeleton-image,
+.skeleton-text {
   background-color: var(--skeleton-bg);
   animation: pulse 1.5s infinite ease-in-out;
 }
@@ -161,12 +245,13 @@ h2 {
   min-width: 300px;
 }
 
-.search-input, .category-select {
+.search-input,
+.category-select {
   padding: 12px 15px;
   border: 1px solid var(--border-color);
   border-radius: 8px;
   font-size: 1rem;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
@@ -176,7 +261,8 @@ h2 {
   border-bottom-right-radius: 0;
 }
 
-.search-input:focus, .category-select:focus {
+.search-input:focus,
+.category-select:focus {
   outline: none;
   border-color: var(--primary-color);
   box-shadow: 0 0 0 3px rgba(52, 152, 219, 0.2);
@@ -282,7 +368,6 @@ h2 {
 .category-icon {
   color: var(--text-light-color);
 }
-
 
 /* --- Recipe Details Modal --- */
 .modal-backdrop {
@@ -405,7 +490,8 @@ h2 {
   margin-top: 15px;
 }
 
-.modal-add-to-plan select, .add-to-plan-button {
+.modal-add-to-plan select,
+.add-to-plan-button {
   padding: 12px;
   border-radius: 8px;
   font-size: 1rem;
@@ -465,7 +551,7 @@ h2 {
   position: relative;
   border-radius: 8px;
   overflow: hidden;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.07);
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.07);
   background-color: #f9f9f9;
   flex-grow: 1;
   display: flex;
@@ -525,6 +611,170 @@ h2 {
   flex-grow: 1;
 }
 
+/* --- Shopping List --- */
+.shopping-list-container {
+  margin-top: 50px;
+  padding: 30px;
+  background-color: var(--card-background);
+  border-radius: 16px;
+  box-shadow: 0 4px 12px var(--shadow-color);
+  text-align: left;
+}
+
+.shopping-list-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  color: var(--primary-color);
+}
+
+.shopping-list-header h2 {
+  margin: 0;
+  color: var(--text-color);
+  text-align: left;
+}
+
+.shopping-list-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin: 15px 0;
+}
+
+.clear-completed-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 15px;
+  background-color: var(--danger-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.clear-completed-button:hover {
+  background-color: #c0392b;
+}
+
+.shopping-list-items {
+  list-style: none;
+  padding: 0;
+}
+
+.shopping-list-item {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 12px 0;
+  border-bottom: 1px solid var(--border-color);
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.shopping-list-item:hover {
+  background-color: #f8f9fa;
+}
+
+.shopping-list-item .checkbox {
+  color: var(--primary-color);
+}
+
+.shopping-list-item.purchased {
+  opacity: 0.6;
+}
+
+.shopping-list-item.purchased .item-name,
+.shopping-list-item.purchased .item-measure {
+  text-decoration: line-through;
+}
+
+.item-measure {
+  font-weight: 600;
+  color: var(--text-color);
+}
+
+.item-name {
+  color: var(--text-light-color);
+}
+
+/* --- Shopping List Sidebar --- */
+.sidebar-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 1050;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.shopping-list-sidebar {
+  position: fixed;
+  top: 0;
+  right: 0;
+  width: 100%;
+  max-width: 400px;
+  height: 100%;
+  background-color: var(--card-background);
+  z-index: 1100;
+  box-shadow: -5px 0 15px rgba(0, 0, 0, 0.1);
+  display: flex;
+  flex-direction: column;
+  transform: translateX(100%);
+  transition: transform 0.3s ease-in-out;
+}
+
+.shopping-list-sidebar.open {
+  transform: translateX(0);
+}
+
+.sidebar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 20px;
+  border-bottom: 1px solid var(--border-color);
+}
+
+.sidebar-header h2 {
+  margin: 0;
+  color: var(--text-color); /* Ensure h2 color is correct */
+}
+
+.close-sidebar-button {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  color: var(--text-light-color);
+  transition: color 0.2s;
+}
+
+.close-sidebar-button:hover {
+  color: var(--danger-color);
+}
+
+.shopping-list-sidebar .shopping-list-items {
+  flex-grow: 1;
+  overflow-y: auto;
+  padding: 0 20px;
+}
+
+.shopping-list-sidebar .shopping-list-actions {
+  padding: 20px;
+  border-top: 1px solid var(--border-color);
+}
+
+.empty-list-message {
+  text-align: center;
+  padding: 40px 20px;
+  color: var(--text-light-color);
+}
+
 /* --- Responsive Adjustments --- */
 @media (max-width: 1200px) {
   .meal-calendar-grid {
@@ -539,7 +789,9 @@ h2 {
 }
 
 @media (max-width: 768px) {
-  h1 { font-size: 2rem; }
+  h1 {
+    font-size: 2rem;
+  }
   .recipe-grid {
     grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
   }
@@ -611,7 +863,11 @@ h2 {
     gap: 10px;
     margin-top: 10px;
   }
-  .add-to-plan-button, .modal-add-to-plan select {
+  .add-to-plan-button,
+  .modal-add-to-plan select {
     width: 100%;
+  }
+  .shopping-list-sidebar {
+    max-width: 90%;
   }
 }

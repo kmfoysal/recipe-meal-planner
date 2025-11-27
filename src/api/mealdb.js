@@ -50,6 +50,16 @@ export const getRecipeDetailsById = (id) => {
 };
 
 /**
+ * Gets the details for a specific recipe by its ID without using the cache.
+ * This is useful for re-fetching data in contexts like the shopping list.
+ * @param {string} id 
+ * @returns {Promise<any>}
+ */
+export const getRecipeDetailsByIdUncached = (id) => {
+  return fetchFromApi(`lookup.php?i=${id}`);
+};
+
+/**
  * Fetches the list of all meal categories.
  * @returns {Promise<any>}
  */

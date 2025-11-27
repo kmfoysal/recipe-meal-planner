@@ -1,6 +1,5 @@
-import React from 'react';
-import { useMealPlan } from '../hooks/useMealPlan';
 import { Trash2 } from 'lucide-react';
+import { useMealPlan } from '../hooks/useMealPlan';
 
 const MealCalendar = () => {
   const { mealPlan, removeMeal } = useMealPlan();

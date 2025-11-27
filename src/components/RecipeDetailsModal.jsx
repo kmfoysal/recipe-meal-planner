@@ -1,11 +1,11 @@
-import React from 'react';
-import { useRecipeDetails } from '../hooks/useRecipeDetails';
+import { CalendarPlus, ClipboardList, X } from 'lucide-react';
+import { useState } from 'react';
 import { useMealPlan } from '../hooks/useMealPlan';
-import { X, ClipboardList, CalendarPlus } from 'lucide-react';
+import { useRecipeDetails } from '../hooks/useRecipeDetails';
 
 const RecipeDetailsModal = ({ recipeId, onClose }) => {
   const recipe = useRecipeDetails(recipeId);
-  const [selectedDay, setSelectedDay] = React.useState('Monday');
+  const [selectedDay, setSelectedDay] = useState('Monday');
   const { addMeal } = useMealPlan();
 
   if (!recipe) {

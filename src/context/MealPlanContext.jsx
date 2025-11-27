@@ -1,4 +1,4 @@
-import { createContext, useReducer, useOptimistic, useEffect } from 'react';
+import { createContext, useReducer, useOptimistic, useEffect, useTransition } from 'react';
 
 const defaultMealPlan = {
   Monday: null,
@@ -38,7 +38,8 @@ export const MealPlanContext = createContext();
 
 export const MealPlanProvider = ({ children }) => {
   const [state, dispatch] = useReducer(mealPlanReducer, getInitialState());
-  const [optimisticState, setOptimisticState] = useOptimistic(state);
+  const [optimisticMealPlan, setOptimisticMealPlan] = useOptimistic(state);
+  const [, startTransition] = useTransition();
 
   // Effect to save meal plan to local storage whenever it changes
   useEffect(() => {
@@ -49,23 +50,20 @@ export const MealPlanProvider = ({ children }) => {
     }
   }, [state]);
 
-  const addMeal = async (day, recipe) => {
-    // Optimistically update the UI
-    setOptimisticState({ type: 'ADD_MEAL', payload: { day, recipe } });
-    // In a real app, you might await a network request here.
-    // For now, we dispatch directly.
-    dispatch({ type: 'ADD_MEAL', payload: { day, recipe } });
+  const addMeal = (day, recipe) => {
+    startTransition(() => {
+      dispatch({ type: 'ADD_MEAL', payload: { day, recipe } });
+    });
   };
 
-  const removeMeal = async (day) => {
-    // Optimistically update the UI
-    setOptimisticState({ type: 'REMOVE_MEAL', payload: { day } });
-    // In a real app, you might await a network request here.
-    dispatch({ type: 'REMOVE_MEAL', payload: { day } });
+  const removeMeal = (day) => {
+    startTransition(() => {
+      dispatch({ type: 'REMOVE_MEAL', payload: { day } });
+    });
   };
 
   return (
-    <MealPlanContext.Provider value={{ mealPlan: optimisticState, addMeal, removeMeal }}>
+    <MealPlanContext.Provider value={{ mealPlan: optimisticMealPlan, addMeal, removeMeal }}>
       {children}
     </MealPlanContext.Provider>
   );

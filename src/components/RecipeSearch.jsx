@@ -1,5 +1,5 @@
-import React, { useState, useEffect } from 'react';
 import { Search } from 'lucide-react';
+import { useEffect, useState } from 'react';
 import { useCategories } from '../hooks/useCategories';
 
 const RecipeSearch = ({ setSearchQuery, setCategory }) => {

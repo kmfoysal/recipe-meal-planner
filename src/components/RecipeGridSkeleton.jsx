@@ -1,4 +1,3 @@
-import React from 'react';
 import RecipeCardSkeleton from './RecipeCardSkeleton';
 
 const RecipeGridSkeleton = ({ count = 12 }) => {
