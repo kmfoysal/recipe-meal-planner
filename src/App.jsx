@@ -30,7 +30,7 @@ function App() {
 
   return (
     <MealPlanProvider>
-      <Layout onToggleSidebar={toggleSidebar}>
+      <Layout onToggleSidebar={toggleSidebar} isSidebarOpen={isSidebarOpen}>
         <div className="App">
           <ErrorBoundary FallbackComponent={ErrorMessage}>
             <MealCalendar />

@@ -36,7 +36,7 @@ h1 {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 20px;
+  margin-bottom: 30px;
 }
 
 h2 {
@@ -45,7 +45,6 @@ h2 {
   color: var(--text-color);
   text-align: left;
   margin-bottom: 20px;
-  margin-top: 0;
 }
 
 /* --- Keyframe Animations --- */
@@ -78,6 +77,19 @@ h2 {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/* --- Accessibility - Visually hidden but available to screen readers --- */
+.sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
 }
 
 /* --- App Layout --- */
@@ -138,7 +150,7 @@ h2 {
   background-color: #202020;
 }
 
-.app-footer p {
+.app-footer p{
   margin: 5px;
 }
 
@@ -494,8 +506,8 @@ h2 {
 
 /* --- Meal Calendar --- */
 .meal-calendar-container {
-  margin-top: 30px;
-  padding: 20px;
+  margin-top: 50px;
+  padding: 30px;
   background-color: var(--card-background);
   border-radius: 16px;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -793,27 +805,12 @@ h2 {
 }
 
 @media (max-width: 576px) {
-
-  .meal-calendar-container{
-    padding: 15px;
-  }
-
-  .meal-calendar-day {
-    padding: 10px;
-    border-radius: 8px;
-  }
-
-  .recipe-search-form {
-    margin-bottom: 20px;
-  }
-
-
   .recipe-grid {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
   .meal-calendar-grid {
-    gap: 15px;
+    grid-template-columns: 1fr;
   }
   .App {
     padding: 10px;
@@ -821,11 +818,6 @@ h2 {
   h1 {
     font-size: 2.2rem;
   }
-
-    h2 {
-    font-size: 1.6rem;
-  }
-
   .modal-content {
     padding: 15px;
     border-radius: 12px;
@@ -866,22 +858,16 @@ h2 {
   .shopping-list-sidebar {
     max-width: 90%;
   }
-
+  .app-header {
+    flex-direction: column;
+    padding: 15px 20px;
+    gap: 15px;
+  }
   .header-logo h1 {
     font-size: 1.5rem;
   }
-
-  .header-actions span {
-    display: none;
-  }
-
   .sidebar-toggle-button {
     width: 100%;
     justify-content: center;
-  }
-
-  .search-input,
-  .category-select {
-    width: 100%;
   }
 }

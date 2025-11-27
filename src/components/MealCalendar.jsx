@@ -23,7 +23,13 @@ const MealCalendar = () => {
               <div className="planned-meal-card">
                 <img src={mealPlan[day].thumbnail} alt={mealPlan[day].name} className="planned-meal-image" />
                 <p className="planned-meal-title">{mealPlan[day].name}</p>
-                <button onClick={() => handleRemoveMeal(day)} className="remove-meal-button"><Trash2 size={16} /></button>
+                <button
+                  onClick={() => handleRemoveMeal(day)}
+                  className="remove-meal-button"
+                  aria-label={`Remove ${mealPlan[day].name} from ${day}`}
+                >
+                  <Trash2 size={16} />
+                </button>
               </div>
             ) : (
               <div className="no-meal-planned">
