@@ -36,7 +36,7 @@ h1 {
   font-size: 2.5rem;
   font-weight: 700;
   color: var(--primary-color);
-  margin-bottom: 30px;
+  margin-bottom: 20px;
 }
 
 h2 {
@@ -45,6 +45,7 @@ h2 {
   color: var(--text-color);
   text-align: left;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
 /* --- Keyframe Animations --- */
@@ -137,7 +138,7 @@ h2 {
   background-color: #202020;
 }
 
-.app-footer p{
+.app-footer p {
   margin: 5px;
 }
 
@@ -228,19 +229,19 @@ h2 {
 /* --- Recipe Search --- */
 .recipe-search-form {
   display: flex;
-  gap: 15px;
+  gap: 15px; /* Keep gap for spacing between input wrapper and select */
   margin: 20px auto 40px;
   padding: 20px;
   border-radius: 12px;
   background-color: var(--card-background);
   box-shadow: 0 4px 12px var(--shadow-color);
   flex-wrap: wrap;
-  justify-content: center;
+  justify-content: center; /* Center items when wrapped */
   align-items: center;
 }
 
 .search-input-wrapper {
-  display: flex;
+  display: flex; /* Still flex to contain input */
   flex-grow: 1;
   min-width: 300px;
 }
@@ -249,16 +250,16 @@ h2 {
 .category-select {
   padding: 12px 15px;
   border: 1px solid var(--border-color);
-  border-radius: 8px;
+  border-radius: 8px; /* Standard border-radius for input */
   font-size: 1rem;
   font-family: "Poppins", sans-serif;
   transition: border-color 0.2s, box-shadow 0.2s;
 }
 
+/* No button-specific border-radius overrides for search input */
 .search-input-wrapper .search-input {
-  border-right: none;
-  border-top-right-radius: 0;
-  border-bottom-right-radius: 0;
+  border-right: 1px solid var(--border-color); /* Restore full border */
+  border-radius: 8px; /* Ensure full border-radius */
 }
 
 .search-input:focus,
@@ -271,31 +272,6 @@ h2 {
 .search-input {
   flex-grow: 1;
   min-width: 250px;
-}
-
-.search-button {
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  padding: 12px 25px;
-  background-color: var(--primary-color);
-  color: white;
-  border: none;
-  border-radius: 8px;
-  cursor: pointer;
-  font-size: 1rem;
-  font-weight: 600;
-  transition: background-color 0.2s, transform 0.2s;
-}
-
-.search-input-wrapper .search-button {
-  border-top-left-radius: 0;
-  border-bottom-left-radius: 0;
-}
-
-.search-button:hover {
-  background-color: var(--primary-hover-color);
-  transform: translateY(-2px);
 }
 
 /* --- Recipe Grid & Cards --- */
@@ -518,8 +494,8 @@ h2 {
 
 /* --- Meal Calendar --- */
 .meal-calendar-container {
-  margin-top: 50px;
-  padding: 30px;
+  margin-top: 30px;
+  padding: 20px;
   background-color: var(--card-background);
   border-radius: 16px;
   box-shadow: 0 4px 12px var(--shadow-color);
@@ -817,12 +793,27 @@ h2 {
 }
 
 @media (max-width: 576px) {
+
+  .meal-calendar-container{
+    padding: 15px;
+  }
+
+  .meal-calendar-day {
+    padding: 10px;
+    border-radius: 8px;
+  }
+
+  .recipe-search-form {
+    margin-bottom: 20px;
+  }
+
+
   .recipe-grid {
     grid-template-columns: 1fr 1fr;
     gap: 15px;
   }
   .meal-calendar-grid {
-    grid-template-columns: 1fr;
+    gap: 15px;
   }
   .App {
     padding: 10px;
@@ -830,6 +821,11 @@ h2 {
   h1 {
     font-size: 2.2rem;
   }
+
+    h2 {
+    font-size: 1.6rem;
+  }
+
   .modal-content {
     padding: 15px;
     border-radius: 12px;
@@ -869,5 +865,23 @@ h2 {
   }
   .shopping-list-sidebar {
     max-width: 90%;
+  }
+
+  .header-logo h1 {
+    font-size: 1.5rem;
+  }
+
+  .header-actions span {
+    display: none;
+  }
+
+  .sidebar-toggle-button {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .search-input,
+  .category-select {
+    width: 100%;
   }
 }

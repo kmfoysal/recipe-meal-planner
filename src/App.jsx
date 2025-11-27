@@ -37,12 +37,12 @@ function App() {
 
             <h1>Recipe Finder</h1>
 
-            <Suspense fallback={<div style={{ height: "100px" }} />}>
+            {/* <Suspense fallback={<div style={{ height: "100px" }} />}> */}
               <RecipeSearch
                 setSearchQuery={setSearchQuery}
                 setCategory={setCategory}
               />
-            </Suspense>
+            {/* </Suspense> */}
 
             <Suspense fallback={<RecipeGridSkeleton />}>
               <RecipeGrid

@@ -1,4 +1,3 @@
-import { Search } from 'lucide-react';
 import { useEffect, useState } from 'react';
 import { useCategories } from '../hooks/useCategories';
 
@@ -31,24 +30,13 @@ const RecipeSearch = ({ setSearchQuery, setCategory }) => {
   const handleCategoryChange = (e) => {
     setCurrentCategory(e.target.value);
     setCategory(e.target.value); // Update parent's category state immediately
-    // When category changes, the debounced search effect will automatically update the search query
-    // setSearchQuery(''); // No need to clear search, debounced effect handles it
+    // Debounced search effect will automatically update the search query with currentSearch
   };
 
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // The debounced effect will handle setSearchQuery(currentSearch)
-    // If user explicitly submits, we might want to immediately set it without debounce
-    // But for simplicity, we let the effect handle it.
-    // If category is selected, clear it on explicit search
-    if (currentCategory) {
-      setCurrentCategory('');
-      setCategory('');
-    }
-  };
+  // No handleSubmit needed as there's no explicit submit button
 
   return (
-    <form onSubmit={handleSubmit} className="recipe-search-form">
+    <form className="recipe-search-form"> {/* Removed onSubmit */}
       <div className="search-input-wrapper">
         <input
           type="text"
@@ -57,10 +45,7 @@ const RecipeSearch = ({ setSearchQuery, setCategory }) => {
           onChange={handleSearchChange}
           className="search-input"
         />
-        <button type="submit" className="search-button">
-          <Search size={18} />
-          <span>Search</span>
-        </button>
+        {/* Search button removed */}
       </div>
 
       <select
