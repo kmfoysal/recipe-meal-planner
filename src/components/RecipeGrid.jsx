@@ -11,8 +11,8 @@ const RecipeGrid = ({ searchQuery, category, onRecipeClick }) => { // Added onRe
 
   return (
     <div className="recipe-grid">
-      {recipes.map((recipe) => (
-        <RecipeCard key={recipe.idMeal} recipe={recipe} onClick={onRecipeClick} /> // Pass onRecipeClick to RecipeCard
+      {recipes.map((recipe, index) => (
+        <RecipeCard key={recipe.idMeal} recipe={recipe} onClick={onRecipeClick} index={index} />
       ))}
     </div>
   );
