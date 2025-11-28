@@ -1,5 +1,4 @@
-import React from 'react';
-import { ShoppingBag, Menu } from 'lucide-react';
+import { ShoppingBag } from 'lucide-react';
 
 const Header = ({ onToggleSidebar, isSidebarOpen }) => {
   return (
