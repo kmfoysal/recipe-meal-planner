@@ -18,7 +18,7 @@ export const useRecipes = ({ searchQuery, category }) => {
     promise = filterByCategory(category);
   } else {
     // Default if nothing is selected
-    promise = searchRecipesByName('Chicken');
+    promise = searchRecipesByName('All');
   }
 
   const { meals } = use(promise);

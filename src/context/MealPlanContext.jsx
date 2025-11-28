@@ -1,5 +1,5 @@
-import { useReducer, useOptimistic, useEffect, useTransition } from 'react';
-import { MealPlanContext } from './mealPlanContext.js';
+import { useReducer, useOptimistic, useEffect, useTransition } from "react";
+import { MealPlanContext } from "./mealPlanContext.js";
 
 const defaultMealPlan = {
   Monday: null,
@@ -14,7 +14,7 @@ const defaultMealPlan = {
 // Function to get initial state from local storage or return default
 const getInitialState = () => {
   try {
-    const storedMealPlan = localStorage.getItem('mealPlan');
+    const storedMealPlan = localStorage.getItem("mealPlan");
     if (storedMealPlan) {
       return JSON.parse(storedMealPlan);
     }
@@ -26,9 +26,9 @@ const getInitialState = () => {
 
 function mealPlanReducer(state, action) {
   switch (action.type) {
-    case 'ADD_MEAL':
+    case "ADD_MEAL":
       return { ...state, [action.payload.day]: action.payload.recipe };
-    case 'REMOVE_MEAL':
+    case "REMOVE_MEAL":
       return { ...state, [action.payload.day]: null };
     default:
       return state;
@@ -43,7 +43,7 @@ export const MealPlanProvider = ({ children }) => {
   // Effect to save meal plan to local storage whenever it changes
   useEffect(() => {
     try {
-      localStorage.setItem('mealPlan', JSON.stringify(state));
+      localStorage.setItem("mealPlan", JSON.stringify(state));
     } catch (error) {
       console.error("Error saving meal plan to localStorage:", error);
     }
@@ -53,24 +53,29 @@ export const MealPlanProvider = ({ children }) => {
     const mealInfo = {
       id: recipe.id,
       name: recipe.name,
-      thumbnail: recipe.thumbnail
+      thumbnail: recipe.thumbnail,
     };
 
     startTransition(() => {
-      setOptimisticMealPlan({ type: 'ADD_MEAL', payload: { day, recipe: mealInfo } });
-      dispatch({ type: 'ADD_MEAL', payload: { day, recipe: mealInfo } });
+      setOptimisticMealPlan({
+        type: "ADD_MEAL",
+        payload: { day, recipe: mealInfo },
+      });
+      dispatch({ type: "ADD_MEAL", payload: { day, recipe: mealInfo } });
     });
   };
 
   const removeMeal = (day) => {
     startTransition(() => {
-      setOptimisticMealPlan({ type: 'REMOVE_MEAL', payload: { day } }); 
-      dispatch({ type: 'REMOVE_MEAL', payload: { day } });
+      setOptimisticMealPlan({ type: "REMOVE_MEAL", payload: { day } });
+      dispatch({ type: "REMOVE_MEAL", payload: { day } });
     });
   };
 
   return (
-    <MealPlanContext.Provider value={{ mealPlan: optimisticMealPlan, addMeal, removeMeal }}>
+    <MealPlanContext.Provider
+      value={{ mealPlan: optimisticMealPlan, addMeal, removeMeal }}
+    >
       {children}
     </MealPlanContext.Provider>
   );
